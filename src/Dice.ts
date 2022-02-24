@@ -9,26 +9,26 @@
 import promptSync from "prompt-sync"
 const prompt = promptSync()
 
-
-
-var numberOfGuesses = 0
-  var randomNumber = Math.floor((Math.random() * 6) + 1)
-  const guessInputString = prompt("Guess the number between 1 and your range (integer): ")
-  const guessInput = parseInt(guessInputString, 10)
-  numberOfGuesses = numberOfGuesses + 1;
+let numberOfGuesses = 0
+let guessInput = 0
+const randomNumber = Math.floor((Math.random() * 6) + 1)
+do {
+  const guessInputString = prompt("Guess the number between 1 and 6 (integer): ")
+    guessInput = parseInt(guessInputString)
+  numberOfGuesses = numberOfGuesses + 1
  
-   do {
-    const guessInputString = prompt("Guess the number between 1 and your range (integer): ")
-    const guessInput = parseInt(guessInputString)
-
   if (guessInput > randomNumber) {
-    console.log("Wrong , You guessed too high, think smaller");
+    console.log("Wrong , You guessed too high, think smaller")
     console.log("Guess again")
   } else if (guessInput < randomNumber) {
-    console.log("Wrong , You guessed too low, think bigger");
+    console.log("Wrong , You guessed too low, think bigger")
     console.log("Guess again")
+  } else if (isNaN(guessInput) == true) {
+    console.log("ERROR: Invalid Input")
   } else {
     console.log("You guessed the right number!")
     console.log("It took you", numberOfGuesses, "guesses.")
+    console.log("\nDone.")
   }
-} while (guessInput != randomNumber);
+} while (guessInput != randomNumber)
+ 
